@@ -1,0 +1,32 @@
+header {
+    background-color: #222;
+    height: 36px;
+    padding: 8px 32px 8px 13px;
+}
+
+.logo-img {
+    animation: logo-img-spin infinite 8s linear;
+    height: 35px;
+    background: #ff7f7f;
+}
+
+@keyframes logo-img-spin {
+    from { transform: scaleX(-1); }
+}
+
+.action-buttons {
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 10px;
+    width: 15%;
+}
+
+.login-logout {
+    order: 1;
+}
+
+.book-button {
+    order: 0;
+}
