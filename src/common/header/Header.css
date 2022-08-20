@@ -30,3 +30,24 @@ header {
 .book-button {
     order: 0;
 }
+
+.tabStyle {
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.authModal {
+    /* top: 100px; */
+    /* right: 50%; */
+    background-color: white;
+    bottom: auto;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    margin-top: 70px;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: auto;
+    padding: 10px;
+}
