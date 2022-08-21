@@ -132,6 +132,20 @@ const Home = (props) => {
         artist.length > 0 ? query += `&artists=${artist.toString()}` : false;
         releaseDateStart !== "" ? query += `&start_date=${releaseDateStart}` : false;
         releaseDateEnd !== "" ? query += `&start_date=${releaseDateEnd}` : false;
+
+        fetch(`${process.env.REACT_APP_API_HOST_URL}/api/v1/movies${query}`).then(
+            (response) => {
+                return response.json();
+            }
+        ).then((data) => {
+            console.log(data);
+            setReleasedMovies(data.movies);
+        }).catch(
+            (err) => {
+                console.log(err);
+            }
+        )
+
     }
 
     // Released Movies
