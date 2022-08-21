@@ -173,7 +173,57 @@ const Home = (props) => {
 
     // Released Movies
 
+    let releasedMovies = [
+        {
+            "id": 1,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-04"
+        },
+        {
+            "id": 2,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-05"
+        },
+        {
+            "id": 3,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-06"
+        },
+        {
+            "id": 4,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-07"
+        },
+        {
+            "id": 5,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-08"
 
+        },
+        {
+            "id": 6,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-09"
+        },
+        {
+            "id": 7,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-10"
+        },
+        {
+            "id": 8,
+            "poster_url": sampleMoviePoster,
+            "title": "Released Movie",
+            "release_date": "2022-05-11"
+        }
+    ]
 
     
 
@@ -198,7 +248,17 @@ const Home = (props) => {
         <br />
         <div className="released-movies">
             <div className="rm-list">
-                Sample
+            <GridList cellHeight={350} cols={4} className={classes.gridListMain}>
+                {releasedMovies.map(movie => (
+                    <GridListTile onClick={() => this.movieClickHandler(movie.id)} className="released-movie-grid-item" key={"grid" + movie.id}>
+                        <img src={movie.poster_url} className="movie-poster" alt={movie.title} />
+                        <GridListTileBar
+                            title={movie.title}
+                            subtitle={<span>Release Date: {new Date(movie.release_date).toDateString()}</span>}
+                        />
+                    </GridListTile>
+                ))}
+            </GridList>
             </div>
             <div className="rm-search">
                 <Card>
