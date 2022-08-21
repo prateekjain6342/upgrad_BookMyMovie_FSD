@@ -1,5 +1,4 @@
 .upcoming-movies {
-    height: auto;
     width: 100%;
 }
 
@@ -8,4 +7,32 @@
     padding: 8px;
     text-align: center;
     font-size: 1rem;
+}
+
+.um-gl-root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden !important;
+}
+
+.um-grid-list {
+    flex-wrap: nowrap;
+    transform: translateZ(0);
+}
+
+.released-movies {
+    display: flex;
+    gap: 16px;
+    /* flex-direction: column; */
+}
+
+.rm-list {
+    order: 0;
+    width: 76%;
+}
+
+.rm-search {
+    order: 1;
+    width: 24%;
 }
