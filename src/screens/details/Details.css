@@ -13,4 +13,31 @@
 
 .main-content {
     display: flex;
+    gap: 10px;
+}
+
+.left-content {
+    order: 0;
+    width: 20%;
+    padding: 8px;
+}
+
+.left-content img {
+    width: 100%;
+}
+
+.middle-content {
+    order: 1;
+    width: 60%;
+    padding: 8px;
+}
+
+.right-content {
+    order: 2;
+    width: 20%;
+    padding: 8px;
+}
+
+iframe {
+    width: 100% !important;
 }

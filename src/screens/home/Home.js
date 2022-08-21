@@ -38,6 +38,7 @@ const styles = theme => ({
 
 const Home = (props) => {
 
+
     const { classes } = props;
 
     // Movies
@@ -178,54 +179,109 @@ const Home = (props) => {
             "id": 1,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-04"
+            "release_date": "2022-05-04",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         },
         {
             "id": 2,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-05"
+            "release_date": "2022-05-05",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         },
         {
             "id": 3,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-06"
+            "release_date": "2022-05-06",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         },
         {
             "id": 4,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-07"
+            "release_date": "2022-05-07",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         },
         {
             "id": 5,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-08"
+            "release_date": "2022-05-08",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
 
         },
         {
             "id": 6,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-09"
+            "release_date": "2022-05-09",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         },
         {
             "id": 7,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-10"
+            "release_date": "2022-05-10",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         },
         {
             "id": 8,
             "poster_url": sampleMoviePoster,
             "title": "Released Movie",
-            "release_date": "2022-05-11"
+            "release_date": "2022-05-11",
+            "genres": ['A','B','C'],
+            "duration": 148,
+            "critics_rating": 8.0,
+            "wiki_url": "/",
+            "storyline": "ABABABA",
+            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
         }
     ]
 
-    
+    const showMovieDetails = (movieId) => {
+
+        const filterMovie = (object) => {
+            return object.id === movieId;
+        };
+
+        props.history.push(`/movie/${movieId}`, releasedMovies.filter(filterMovie));
+    }
 
     return (
         <Fragment>
@@ -250,7 +306,7 @@ const Home = (props) => {
             <div className="rm-list">
             <GridList cellHeight={350} cols={4} className={classes.gridListMain}>
                 {releasedMovies.map(movie => (
-                    <GridListTile onClick={() => this.movieClickHandler(movie.id)} className="released-movie-grid-item" key={"grid" + movie.id}>
+                    <GridListTile onClick={() => showMovieDetails(movie.id)} className="released-movie-grid-item" key={"grid" + movie.id}>
                         <img src={movie.poster_url} className="movie-poster" alt={movie.title} />
                         <GridListTileBar
                             title={movie.title}
