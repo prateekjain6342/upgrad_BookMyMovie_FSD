@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useReducer, useState } from "react";
 import './Home.css';
 import Header from "../../common/header/Header";
 import GridList from '@material-ui/core/GridList';
@@ -43,74 +43,42 @@ const Home = (props) => {
 
     // Movies
 
-    let movies = [
-        {
-            "id": 1,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        },
-        {
-            "id": 2,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        },
-        {
-            "id": 3,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        },
-        {
-            "id": 4,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        },
-        {
-            "id": 5,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        },
-        {
-            "id": 6,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        },
-        {
-            "id": 7,
-            "poster_url": sampleMoviePoster,
-            "title": "Sample Releasing Movie"
-        }
-    ]
+    const [upcomingMovies, setUpcomingMovies] = useState([]);
 
-    const [upcomingMovies, setUpcomingMovies] = useState(movies);
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_HOST_URL}/api/v1/movies?limit=1000&status=PUBLISHED`).then(
+            (response) => {
+                return response.json();
+            }
+        ).then((data) => {
+            console.log(data);
+            setUpcomingMovies(data.movies);
+        }).catch(
+            (err) => {
+                console.log(err);
+            }
+        )
+    }, [])
+
 
     // Genres
 
-    let genres = [
-        {
-            "id": 1,
-            "genre": "Drama"
-        },
-        {
-            "id": 2,
-            "genre": "Romance"
-        },
-        {
-            "id": 3,
-            "genre": "Horror"
-        },
-        {
-            "id": 4,
-            "genre": "Action"
-        },
-        {
-            "id": 5,
-            "genre": "Crime"
-        },
-        {
-            "id": 6,
-            "genre": "Thriller"
-        }
-    ]
+    const [genres, setGenres] = useState([]);
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_HOST_URL}/api/v1/genres`).then(
+            (response) => {
+                return response.json();
+            }
+        ).then((data) => {
+            console.log(data);
+            setGenres(data.genres);
+        }).catch(
+            (err) => {
+                console.log(err);
+            }
+        )
+    }, [])
 
     const [genre, setGenre] = useState([]);
     const genreSetter = (value) => {
@@ -119,28 +87,22 @@ const Home = (props) => {
 
     // Artists
 
-    let artists = [
-        {
-            "id": 1,
-            "first_name": "Prateek",
-            "last_name": "Jain"
-        },
-        {
-            "id": 2,
-            "first_name": "Satish",
-            "last_name": "Sahu"
-        },
-        {
-            "id": 3,
-            "first_name": "Anjali",
-            "last_name": "Kalsi"
-        },
-        {
-            "id": 4,
-            "first_name": "Prateek",
-            "last_name": "Kalsi"
-        }
-    ]
+    const [artists, setArtists] = useState([]);
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_HOST_URL}/api/v1/artists?limit=1000`).then(
+            (response) => {
+                return response.json();
+            }
+        ).then((data) => {
+            console.log(data);
+            setArtists(data.artists);
+        }).catch(
+            (err) => {
+                console.log(err);
+            }
+        )
+    }, [])
 
     const [artist, setArtist] = useState([]);
     const artistSetter = (value) => {
@@ -174,105 +136,23 @@ const Home = (props) => {
 
     // Released Movies
 
-    let releasedMovies = [
-        {
-            "id": 1,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-04",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        },
-        {
-            "id": 2,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-05",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        },
-        {
-            "id": 3,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-06",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        },
-        {
-            "id": 4,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-07",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        },
-        {
-            "id": 5,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-08",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
+    const [releasedMovies, setReleasedMovies] = useState([]);
 
-        },
-        {
-            "id": 6,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-09",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        },
-        {
-            "id": 7,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-10",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        },
-        {
-            "id": 8,
-            "poster_url": sampleMoviePoster,
-            "title": "Released Movie",
-            "release_date": "2022-05-11",
-            "genres": ['A','B','C'],
-            "duration": 148,
-            "critics_rating": 8.0,
-            "wiki_url": "/",
-            "storyline": "ABABABA",
-            "trailer_url": "https://youtu.be/TcMBFSGVi1c"
-        }
-    ]
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_HOST_URL}/api/v1/movies?limit=1000&status=RELEASED`).then(
+            (response) => {
+                return response.json();
+            }
+        ).then((data) => {
+            console.log(data);
+            setReleasedMovies(data.movies);
+        }).catch(
+            (err) => {
+                console.log(err);
+            }
+        )
+    }, [])
+
 
     const showMovieDetails = (movieId) => {
 
