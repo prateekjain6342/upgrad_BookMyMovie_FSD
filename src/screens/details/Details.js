@@ -20,6 +20,53 @@ const Details = (props) => {
         }
     }
 
+    let [stars, setStars] = useState([
+        {
+            id: 1,
+            class: "blackStar"
+        },
+        {
+            id: 2,
+            class: "blackStar"
+        },
+        {
+            id: 3,
+            class: "blackStar"
+        },
+        {
+            id: 4,
+            class: "blackStar"
+        },
+        {
+            id: 5,
+            class: "blackStar"
+        }
+    ])
+
+
+    const assignRating = (id) => {
+        let newStars = [];
+        stars.forEach((starObj) => {
+
+            starObj.id <= id ? newStars.push({
+                id: starObj.id,
+                class: "yellowStar"
+            }) : newStars.push({
+                id: starObj.id,
+                class: "blackStar"
+            });
+
+        })
+        
+        setStars(newStars);
+    }
+    
+
+    const artistGridClick = (url) => {
+        window.location.assign(url);
+    }
+    
+
     return (
         <Fragment>
             <Header movieReleased={true} />
@@ -66,7 +113,37 @@ const Details = (props) => {
                     </div>
                 </div>
                 <div className="right-content">
-                    
+                    <Typography>
+                        <span className="bold">Rate this movie: </span>
+                    </Typography>
+                    {stars.map(star => (
+                        <StarBorderIcon
+                            className={star.class}
+                            key={star.id}
+                            onClick={() => assignRating(star.id)}
+                        />
+                    ))}
+
+                    <div className="bold marginBottom16 marginTop16">
+                        <Typography>
+                            <span className="bold">Artists:</span>
+                        </Typography>
+                    </div>
+                    <div className="paddingRight">
+                        <GridList cellHeight={160} cols={2}>
+                            {movie.artists != null && movie.artists.map(artist => (
+                                <GridListTile
+                                    className="gridTile"
+                                    onClick={() => artistGridClick(artist.wiki_url)}
+                                    key={artist.id}>
+                                    <img src={artist.profile_url} alt={artist.first_name + " " + artist.last_name} />
+                                    <GridListTileBar
+                                        title={artist.first_name + " " + artist.last_name}
+                                    />
+                                </GridListTile>
+                            ))}
+                        </GridList>
+                    </div>
                 </div>
             </div>
         </Fragment>

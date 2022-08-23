@@ -41,3 +41,13 @@
 iframe {
     width: 100% !important;
 }
+
+.blackStar {
+    color: none;
+    cursor: pointer;
+}
+
+.yellowStar {
+    color: yellow;
+    cursor: pointer;
+}
