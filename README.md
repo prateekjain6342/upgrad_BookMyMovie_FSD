@@ -12,7 +12,7 @@ Movie Details Page:
 ![](src/assets/app_screenshots/movie-details-screen.png)
 
 Bookshow Page:
-![](src/assets/app_screenshots/movie-details-screen.png)
+![](src/assets/app_screenshots/book-show.png)
 
 Header:
 ![](src/assets/app_screenshots/header.png)
