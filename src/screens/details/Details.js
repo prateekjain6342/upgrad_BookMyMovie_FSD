@@ -69,7 +69,7 @@ const Details = (props) => {
 
     return (
         <Fragment>
-            <Header movieReleased={true} />
+            <Header movieReleased={true} movieId={movie.id} />
             <div className="back-link">
                 <Typography>
                     <a href="/">  &#60; Back to Home </a>
