@@ -6,7 +6,7 @@ Homepage:
 ![](src/assets/app_screenshots/home-screen.png)
 
 Login/Register Modal:
-![](src/assets/app_screenshots/login-register.png)
+![](src/assets/app_screenshots/login-register-1.png)
 
 Movie Details Page:
 ![](src/assets/app_screenshots/movie-details-screen.png)
