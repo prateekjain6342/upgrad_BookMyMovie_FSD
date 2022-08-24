@@ -1,13 +1,11 @@
-import React, { Fragment, useEffect, useReducer, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import './Home.css';
 import Header from "../../common/header/Header";
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import sampleMoviePoster from '../../assets/movie.jpeg';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, Card, CardContent, Checkbox, FormControl, Input, InputLabel, ListItemText, MenuItem, Select, TextField, Typography } from "@material-ui/core";
-import { CheckBox } from "@material-ui/icons";
 
 
 const styles = theme => ({
@@ -51,7 +49,7 @@ const Home = (props) => {
                 return response.json();
             }
         ).then((data) => {
-            console.log(data);
+            // console.log(data);
             setUpcomingMovies(data.movies);
         }).catch(
             (err) => {
@@ -71,7 +69,7 @@ const Home = (props) => {
                 return response.json();
             }
         ).then((data) => {
-            console.log(data);
+            // console.log(data);
             setGenres(data.genres);
         }).catch(
             (err) => {
@@ -95,7 +93,7 @@ const Home = (props) => {
                 return response.json();
             }
         ).then((data) => {
-            console.log(data);
+            // console.log(data);
             setArtists(data.artists);
         }).catch(
             (err) => {
@@ -138,7 +136,7 @@ const Home = (props) => {
                 return response.json();
             }
         ).then((data) => {
-            console.log(data);
+            // console.log(data);
             setReleasedMovies(data.movies);
         }).catch(
             (err) => {
@@ -158,7 +156,7 @@ const Home = (props) => {
                 return response.json();
             }
         ).then((data) => {
-            console.log(data);
+            // console.log(data);
             setReleasedMovies(data.movies);
         }).catch(
             (err) => {
